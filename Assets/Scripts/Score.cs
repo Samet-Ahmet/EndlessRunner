@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class Score : MonoBehaviour
 {
     private float score = 0.0f;
@@ -10,6 +11,7 @@ public class Score : MonoBehaviour
     private int scoreToNextLevel = 10;
     private bool isDead = false;
     public Text scoreText;
+    public DeathMenu deathMenu;
 
     // Update is called once per frame
     void Update()
@@ -21,6 +23,7 @@ public class Score : MonoBehaviour
         score += Time.deltaTime * difficultyLevel; // TODO: daha hızlı puan verme
         scoreText.text = ((int)score).ToString();
     }
+
     void LevelUp()
     {
         if (difficultyLevel == maxDifficultyLevel)
@@ -35,5 +38,9 @@ public class Score : MonoBehaviour
     public void OnDeath()
     {
         isDead = true;
+        if (PlayerPrefs.GetFloat("HighScore") < score)
+            PlayerPrefs.SetFloat("HighScore", score);
+
+        deathMenu.ToggleEndMenu(score);
     }
 }
