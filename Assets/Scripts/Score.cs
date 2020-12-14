@@ -12,7 +12,11 @@ public class Score : MonoBehaviour
     private bool isDead = false;
     public Text scoreText;
     public DeathMenu deathMenu;
-
+    public Text highScoreText;
+    void Start()
+    {
+        highScoreText.text = "Nice try.\nBut you haven't reached the high score.";
+    }
     // Update is called once per frame
     void Update()
     {
@@ -39,7 +43,10 @@ public class Score : MonoBehaviour
     {
         isDead = true;
         if (PlayerPrefs.GetFloat("HighScore") < score)
+        {
             PlayerPrefs.SetFloat("HighScore", score);
+            highScoreText.text = "Congratulations!\nYou have reached the high score!";
+        }
 
         deathMenu.ToggleEndMenu(score);
     }

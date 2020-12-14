@@ -64,6 +64,7 @@ public class TileManager : MonoBehaviour
         int randomIndex = lastPrefabIndex;
         while (randomIndex == lastPrefabIndex)
             randomIndex = Random.Range(0, tilePrefabs.Length);
+        //randomIndex = 0;
         lastPrefabIndex = randomIndex;
         return randomIndex;
     }

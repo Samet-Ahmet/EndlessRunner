@@ -14,12 +14,24 @@ public class PlayerMotor : MonoBehaviour
     private float startTime;
     private bool isDead = false;
     public Animator animator;
+    public float laneDistance;
+    public bool right, left;
+    public float targetX;
 
-    // Start is called before the first frame update
+    public Swipe swipeControls;
+    public int lane;
+
+    private float swipeStep = 60.0f;
+
+    //Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
         startTime = Time.time;
+        lane = 0;
+        right = left = false;
+        laneDistance = 2.0f;
+        targetX = 0;
     }
 
     // Update is called once per frame
@@ -33,7 +45,79 @@ public class PlayerMotor : MonoBehaviour
             controller.Move(Vector3.forward * speed * Time.deltaTime);
             return;
         }
+        if (controller.isGrounded)
+            verticalVelocity = -0.5f;
+        else
+            verticalVelocity -= gravity * Time.deltaTime;
 
+        controller.Move(Vector3.forward * speed * Time.deltaTime);
+
+        float xPos = transform.position.x;
+        if (right)
+        {
+            controller.Move(new Vector3(laneDistance / swipeStep, 0, speed*Time.deltaTime));
+            xPos = transform.position.x;
+            if (Mathf.Abs(xPos - targetX) == 0)
+            {
+                right = false;
+                lane = (lane == -1) ? 0 : 1;
+                animator.SetBool("DodgeRight", false);
+            }
+        }
+        else if (left)
+        {
+            controller.Move(new Vector3(-laneDistance / (swipeStep), 0, speed*Time.deltaTime));
+            xPos = transform.position.x;
+            if (Mathf.Abs(xPos - targetX) == 0)
+            {
+                left = false;
+                lane = (lane == 0) ? -1 : 0;
+                animator.SetBool("DodgeLeft", false);
+            }
+        }
+
+
+        // swipe right
+        if ((swipeControls.SwipeRight || Input.GetKeyDown(KeyCode.D)) && lane != 1 && !right && !left)
+        {
+            right = true;
+            targetX = xPos + laneDistance;
+            animator.SetBool("DodgeRight", true);
+        }
+        //swipe left
+        else if ((swipeControls.SwipeLeft || Input.GetKeyDown(KeyCode.A)) && lane != -1 && !right && !left)
+        {
+            left = true;
+            targetX = xPos - laneDistance;
+            animator.SetBool("DodgeLeft", true);
+        }
+
+
+    }
+
+
+
+    public void SetSpeed(float modifier)
+    {
+        speed = 5.0f + modifier;
+    }
+
+    //It is being valled every time our capsule hits something
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.point.z > transform.position.z + 0.1f && hit.gameObject.tag == "Block")
+            Death();
+    }
+
+    private void Death()
+    {
+        isDead = true;
+        GetComponent<Score>().OnDeath();
+        animator.SetBool("IsDead", true);
+    }
+
+    public void Kaydir()
+    {
         moveVector = Vector3.zero;
 
         if (controller.isGrounded)
@@ -59,23 +143,5 @@ public class PlayerMotor : MonoBehaviour
         moveVector.z = speed;
 
         controller.Move(moveVector * Time.deltaTime);
-    }
-
-    public void SetSpeed(float modifier)
-    {
-        speed = 5.0f + modifier;
-    }
-    //It is being valled every time our capsule hits something
-    void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        if (hit.point.z > transform.position.z + 0.1f && hit.gameObject.tag == "Block")
-            Death();
-    }
-
-    private void Death()
-    {
-        isDead = true;
-        GetComponent<Score>().OnDeath();
-        animator.SetBool("IsDead", true);
     }
 }

@@ -8,6 +8,7 @@ public class DeathMenu : MonoBehaviour
 {
     public Text scoreText;
     public Image backgroundImg;
+    public GameObject scoreContainer;
 
     private bool isShowned = false;
 
@@ -25,12 +26,13 @@ public class DeathMenu : MonoBehaviour
             return;
 
         transition += Time.deltaTime;
-        backgroundImg.color = Color.Lerp(new Color(0, 0, 0, 0), Color.black, transition);
+        backgroundImg.color = Color.Lerp(new Color(0, 0, 0, 0), new Color(0, 0, 0, 0.5f), transition);
     }
 
     public void ToggleEndMenu(float score)
     {
         gameObject.SetActive(true);
+        scoreContainer.SetActive(false);
         scoreText.text = ((int)score).ToString();
         isShowned = true;
     }

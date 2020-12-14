@@ -17,7 +17,6 @@ public class CameraMotor : MonoBehaviour
     {
         lookAt = GameObject.FindGameObjectWithTag("Player").transform;
         startOffset = transform.position - lookAt.position;
-        
     }
 
     // Update is called once per frame
@@ -25,10 +24,12 @@ public class CameraMotor : MonoBehaviour
     {
         moveVector = lookAt.position + startOffset;
         //X
-        moveVector.x = 0;
+        moveVector.x = 0.0f;
         //Y
         moveVector.y = Mathf.Clamp(moveVector.y, 4, 6);
         
+        // moveVector.z = 1.0f;
+
         if(transition > 1.0f)
         {
             transform.position = moveVector;
