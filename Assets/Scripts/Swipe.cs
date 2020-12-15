@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class Swipe : MonoBehaviour
 {
-    private bool tap, swipeLeft, swipeRight, swipeUp, swipeDown;
+    public static bool tap, swipeLeft, swipeRight, swipeUp, swipeDown;
     private bool isDraging = false;
     private Vector2 startTouch, swipeDelta;
-
-    public Vector2 SwipeDelta { get { return swipeDelta; } }
-    public bool SwipeLeft { get { return swipeLeft; } }
-    public bool SwipeRight { get { return swipeRight; } }
-    public bool SwipeUp { get { return swipeUp; } }
-    public bool SwipeDown { get { return swipeDown; } }
+    // public Vector2 SwipeDelta { get { return swipeDelta; } }
+    // public bool SwipeLeft { get { return swipeLeft; } }
+    // public bool SwipeRight { get { return swipeRight; } }
+    // public bool SwipeUp { get { return swipeUp; } }
+    // public bool SwipeDown { get { return swipeDown; } }
 
     private void Update()
     {
@@ -48,9 +47,7 @@ public class Swipe : MonoBehaviour
         }
         #endregion
 
-
         //Calculate the distance
-
         swipeDelta = Vector2.zero;
         if (isDraging)
         {
@@ -66,6 +63,7 @@ public class Swipe : MonoBehaviour
             //Which direction?
             float x = swipeDelta.x;
             float y = swipeDelta.y;
+
             if (Mathf.Abs(x) > Mathf.Abs(y))
             {
                 //Left or Right

@@ -36,7 +36,6 @@ public class Score : MonoBehaviour
         scoreToNextLevel *= 2;
         difficultyLevel++;
         GetComponent<PlayerMotor>().SetSpeed(difficultyLevel);
-        Debug.Log(difficultyLevel);
     }
 
     public void OnDeath()
