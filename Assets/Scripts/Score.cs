@@ -13,6 +13,8 @@ public class Score : MonoBehaviour
     public Text scoreText;
     public DeathMenu deathMenu;
     public Text highScoreText;
+    public AudioSource congrats;
+    public AudioSource gameover;
     void Start()
     {
         highScoreText.text = "Nice try.\nBut you haven't reached the high score.";
@@ -45,6 +47,11 @@ public class Score : MonoBehaviour
         {
             PlayerPrefs.SetFloat("HighScore", score);
             highScoreText.text = "Congratulations!\nYou have reached the high score!";
+            congrats.Play();
+        }
+        else
+        {
+            gameover.Play();
         }
 
         deathMenu.ToggleEndMenu(score);

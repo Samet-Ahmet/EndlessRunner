@@ -73,31 +73,31 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11244}
+      Script: {instanceID: 11252}
     - Class: 114
-      Script: {instanceID: 11408}
-    - Class: 114
-      Script: {instanceID: 11442}
+      Script: {instanceID: 11416}
     - Class: 114
       Script: {instanceID: 11450}
     - Class: 114
-      Script: {instanceID: 11832}
+      Script: {instanceID: 11458}
     - Class: 114
-      Script: {instanceID: 12026}
+      Script: {instanceID: 11840}
     - Class: 114
-      Script: {instanceID: 12136}
+      Script: {instanceID: 12034}
     - Class: 114
-      Script: {instanceID: 12142}
+      Script: {instanceID: 12144}
     - Class: 114
-      Script: {instanceID: 12224}
+      Script: {instanceID: 12150}
     - Class: 114
-      Script: {instanceID: 12546}
+      Script: {instanceID: 12232}
     - Class: 114
-      Script: {instanceID: 12706}
+      Script: {instanceID: 12554}
     - Class: 114
-      Script: {instanceID: 12950}
+      Script: {instanceID: 12714}
     - Class: 114
-      Script: {instanceID: 13056}
+      Script: {instanceID: 12958}
+    - Class: 114
+      Script: {instanceID: 13064}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -160,21 +160,21 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11244}
+      Script: {instanceID: 11252}
     - Class: 114
-      Script: {instanceID: 11300}
+      Script: {instanceID: 11308}
     - Class: 114
-      Script: {instanceID: 11408}
+      Script: {instanceID: 11416}
     - Class: 114
-      Script: {instanceID: 11450}
+      Script: {instanceID: 11458}
     - Class: 114
-      Script: {instanceID: 11832}
+      Script: {instanceID: 11840}
     - Class: 114
-      Script: {instanceID: 12224}
+      Script: {instanceID: 12232}
     - Class: 114
-      Script: {instanceID: 12706}
+      Script: {instanceID: 12714}
     - Class: 114
-      Script: {instanceID: 13056}
+      Script: {instanceID: 13064}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -280,7 +280,7 @@ ScriptsOnlyBuild:
     className: TouchInputModule
   - hash:
       serializedVersion: 2
-      Hash: cebf77750941a51014944084cba7a4de
+      Hash: 7975476f63c5b09a8187c6937f01db1d
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerMotor
@@ -436,7 +436,7 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAnimator
   - hash:
       serializedVersion: 2
-      Hash: 356f96deb44d8a72890e9da966c45346
+      Hash: 96a52dd5f5fcfff5d01fb55fb91da70b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Score
@@ -678,4 +678,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/Menu.unity
   - Assets/Scenes/Game.unity
-  playerPath: C:/Users/samet/Desktop/runnerV2.1(25).apk
+  playerPath: C:/Users/ahmetkkn07/Desktop/EndlessRunner v2.2.apk

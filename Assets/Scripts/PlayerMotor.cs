@@ -8,23 +8,25 @@ public class PlayerMotor : MonoBehaviour
     private Vector3 moveVector;
     public Animator animator;
 
-    private float speed = 5.0f;
+    private float speed = 6.0f;
     private float verticalVelocity = 0.0f;
     private float gravity = 12.0f;
     private float animationDuration = 3.0f;
-    private float jumpForce = 7.0f;
+    private float jumpForce = 6.8f;
     private float startTime;
     private int desiredLane = 1;//0:left, 1:middle, 2:right
     public float laneDistance = 2.0f;//The distance between tow lanes
     // private bool isSliding = false; //never used
 
     private bool isDead = false;
+    public AudioSource bg;
 
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
         startTime = Time.time;
+        //bg = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -102,6 +104,7 @@ public class PlayerMotor : MonoBehaviour
     private void Death()
     {
         isDead = true;
+        bg.Stop();
         GetComponent<Score>().OnDeath();
         animator.SetBool("IsDead", true);
     }
