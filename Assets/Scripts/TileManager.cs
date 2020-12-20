@@ -10,7 +10,7 @@ public class TileManager : MonoBehaviour
     private float spawnZ = -5.0f;
     private float tileLength = 10.0f;
     private float safeZone = 15.0f;
-    private int amnTilesOnScreen = 15;
+    private int amnTilesOnScreen = 20;
     private List<GameObject> activeTiles;
     private int lastPrefabIndex = 0;
 
@@ -21,7 +21,7 @@ public class TileManager : MonoBehaviour
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         for (int i = 0; i < amnTilesOnScreen; i++)
         {
-            if (i < 4)
+            if (i < 5)
                 SpawnTile(0);
             else
                 SpawnTile();

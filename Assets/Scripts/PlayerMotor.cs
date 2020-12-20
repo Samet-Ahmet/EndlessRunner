@@ -92,7 +92,7 @@ public class PlayerMotor : MonoBehaviour
 
     public void SetSpeed(float modifier)
     {
-        speed = 5.0f + modifier;
+        speed = 6.0f + modifier;
     }
     //It is being valled every time our capsule hits something
     void OnControllerColliderHit(ControllerColliderHit hit)

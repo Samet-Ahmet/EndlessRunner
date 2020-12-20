@@ -10,7 +10,7 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        highScoreText.text = "Highscore:" + ((int)PlayerPrefs.GetFloat("HighScore")).ToString();
+        highScoreText.text = "Highscore: " + ((int)PlayerPrefs.GetFloat("HighScore")).ToString();
     }
 
     public void ToGame()
