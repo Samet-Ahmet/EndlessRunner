@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
-    private float score = 0.0f;
     private int difficultyLevel = 1;
     private int maxDifficultyLevel = 20;
     private int scoreToNextLevel = 10;
@@ -15,6 +14,8 @@ public class Score : MonoBehaviour
     public Text highScoreText;
     public AudioSource congrats;
     public AudioSource gameover;
+    public float score = 0.0f;
+
     void Start()
     {
         highScoreText.text = "Nice try.\nBut you haven't reached the high score.";

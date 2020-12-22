@@ -9,6 +9,8 @@ public class DeathMenu : MonoBehaviour
     public Text scoreText;
     public Image backgroundImg;
     public GameObject scoreContainer;
+    public GameObject pauseButton;
+    public GameObject muteButton;
 
     private bool isShowned = false;
 
@@ -32,6 +34,8 @@ public class DeathMenu : MonoBehaviour
     public void ToggleEndMenu(float score)
     {
         gameObject.SetActive(true);
+        pauseButton.SetActive(false);
+        muteButton.SetActive(false);
         scoreContainer.SetActive(false);
         scoreText.text = ((int)score).ToString();
         isShowned = true;

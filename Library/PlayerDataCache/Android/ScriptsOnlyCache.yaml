@@ -1,23 +1,18 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - AudioManager
     - CameraMotor
     - DeathMenu
     - MainMenu
+    - MenuAudioManager
+    - PauseGame
     - PlayerMotor
     - Score
     - Swipe
     - TileManager
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
-    UnityEditor.Graphs.dll:
-    - UnityEditor.Graphs.AnimationBlendTree.Graph
-    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
-    - UnityEditor.Graphs.AnimationStateMachine.Graph
-    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
-    - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -98,6 +93,10 @@ ScriptsOnlyBuild:
       Script: {instanceID: 12958}
     - Class: 114
       Script: {instanceID: 13064}
+    - Class: 114
+      Script: {instanceID: 29832}
+    - Class: 114
+      Script: {instanceID: 44672}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -109,6 +108,8 @@ ScriptsOnlyBuild:
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
+      Script: {instanceID: 0}
+    - Class: 205
       Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
@@ -175,6 +176,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 12714}
     - Class: 114
       Script: {instanceID: 13064}
+    - Class: 114
+      Script: {instanceID: 56924}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -280,7 +283,7 @@ ScriptsOnlyBuild:
     className: TouchInputModule
   - hash:
       serializedVersion: 2
-      Hash: 7975476f63c5b09a8187c6937f01db1d
+      Hash: 403092a13ed1c29de1b55b70823c549e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerMotor
@@ -436,7 +439,7 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAnimator
   - hash:
       serializedVersion: 2
-      Hash: 96a52dd5f5fcfff5d01fb55fb91da70b
+      Hash: b97c9858fae201db9ae0f5834d5a7287
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Score
@@ -574,7 +577,7 @@ ScriptsOnlyBuild:
     className: TMP_StyleSheet
   - hash:
       serializedVersion: 2
-      Hash: 5b80e29d0d67cc2d04cc2f58d75bfd7a
+      Hash: 07de712ce6444a065380eebdaec80453
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: DeathMenu
@@ -674,8 +677,26 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 00255b5e9893a37fc3b3882227c97c46
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PauseGame
+  - hash:
+      serializedVersion: 2
+      Hash: 8cfa2290f4aa970213322759d74b59d5
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AudioManager
+  - hash:
+      serializedVersion: 2
+      Hash: 30df14beb753f87e983e647214818cec
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MenuAudioManager
   platform: 13
   scenePathNames:
   - Assets/Scenes/Menu.unity
   - Assets/Scenes/Game.unity
-  playerPath: C:/Users/ahmetkkn07/Desktop/EndlessRunner v2.2.apk
+  playerPath: C:/Users/samet/Desktop/EndlessRunner v2.4.apk

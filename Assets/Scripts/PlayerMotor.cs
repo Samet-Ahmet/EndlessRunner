@@ -14,10 +14,8 @@ public class PlayerMotor : MonoBehaviour
     private float animationDuration = 3.0f;
     private float jumpForce = 6.8f;
     private float startTime;
-    private int desiredLane = 1;//0:left, 1:middle, 2:right
-    public float laneDistance = 2.0f;//The distance between tow lanes
-    // private bool isSliding = false; //never used
-
+    private int desiredLane = 1; //0:left, 1:middle, 2:right
+    private float laneDistance = 2.0f; //The distance between tow lanes
     private bool isDead = false;
     public AudioSource bg;
 
@@ -26,7 +24,6 @@ public class PlayerMotor : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         startTime = Time.time;
-        //bg = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -108,4 +105,5 @@ public class PlayerMotor : MonoBehaviour
         GetComponent<Score>().OnDeath();
         animator.SetBool("IsDead", true);
     }
+
 }
