@@ -11,26 +11,26 @@ public class DeathMenu : MonoBehaviour
     public GameObject scoreContainer;
     public GameObject pauseButton;
     public GameObject muteButton;
-
-    private bool isShowned = false;
-
+    private bool isShowned = false; // Ölüm ekranı aktif mi?
     private float transition = 0.0f;
-    // Start is called before the first frame update
+
     void Start()
     {
-        gameObject.SetActive(false);
+        gameObject.SetActive(false); // Menü başlangıçta gözükmesin
     }
 
-    // Update is called once per frame
     void Update()
     {
+        // Menü gözükmüyorsa hiçbir şey yapma
         if (!isShowned)
             return;
 
+        // Ekran geçiş animasyonu
         transition += Time.deltaTime;
         backgroundImg.color = Color.Lerp(new Color(0, 0, 0, 0), new Color(0, 0, 0, 0.5f), transition);
     }
 
+    // Ölüm menüsünü aktif hale getiren fonksiyon
     public void ToggleEndMenu(float score)
     {
         gameObject.SetActive(true);
@@ -41,14 +41,15 @@ public class DeathMenu : MonoBehaviour
         isShowned = true;
     }
 
+    // Sahneyi yeniden yükle
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    // Ana menüye dön
     public void ToMenu()
     {
-        Time.timeScale = 1;
         SceneManager.LoadScene("Menu");
     }
 }
