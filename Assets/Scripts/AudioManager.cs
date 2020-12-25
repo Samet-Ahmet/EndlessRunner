@@ -4,25 +4,24 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    private GameObject player;
-    public GameObject onOff;
-    public AudioSource bg;
-    private AudioSource congrats;
-    private AudioSource gameover;
+    public GameObject onOff; // Ses açıp kapatma göstergesi
+    public AudioSource bg; // Arka plan sesi
+    private GameObject player; // Tilki
+    private AudioSource congrats; // Tebrikler sesi
+    private AudioSource gameover; // Oyun sona erdi sesi
     private bool isMuted = false;
-    // public AudioSource menu;
 
     void Start()
     {
-         player = GameObject.Find("Player");
-         congrats = player.GetComponents<AudioSource>()[0];
-         gameover = player.GetComponents<AudioSource>()[1];
-        // bg.mute = congrats.mute = gameover.mute = menu.mute = PlayerPrefs.GetBool("isMuted");
+        player = GameObject.Find("Player");
+        congrats = player.GetComponents<AudioSource>()[0];
+        gameover = player.GetComponents<AudioSource>()[1];
+        // GetBool fonksiyonu olmadığı için int tipi kullanıldı (1: true 0: false)
         isMuted = bg.mute = congrats.mute = gameover.mute = PlayerPrefs.GetInt("isMuted") == 1 ? true : false;
         onOff.SetActive(isMuted);
-
     }
 
+    // Sesi açıp kapatan fonksiyon
     public void Toggle()
     {
         bg.mute = !bg.mute;
@@ -30,9 +29,8 @@ public class AudioManager : MonoBehaviour
         gameover.mute = !gameover.mute;
         isMuted = !isMuted;
         onOff.SetActive(isMuted);
-        // menu.mute = !menu.mute;
+        // Ses tercihi hafızaya kaydedildi
         PlayerPrefs.SetInt("isMuted", isMuted ? 1 : 0);
-
     }
 
 }

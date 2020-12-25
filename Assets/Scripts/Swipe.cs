@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Swipe : MonoBehaviour
 {
-    public static bool tap, swipeLeft, swipeRight, swipeUp, swipeDown;
+    public static bool tap;
+    public static bool swipeLeft;
+    public static bool swipeRight;
+    public static bool swipeUp;
+    public static bool swipeDown;
     private bool isDraging = false;
-    private Vector2 startTouch, swipeDelta;
-    // public Vector2 SwipeDelta { get { return swipeDelta; } }
-    // public bool SwipeLeft { get { return swipeLeft; } }
-    // public bool SwipeRight { get { return swipeRight; } }
-    // public bool SwipeUp { get { return swipeUp; } }
-    // public bool SwipeDown { get { return swipeDown; } }
+    private Vector2 startTouch; // Kaydırmanın başlangıç noktası
+    private Vector2 swipeDelta; // Kaydırma vektörü
 
     private void Update()
     {
@@ -19,8 +19,7 @@ public class Swipe : MonoBehaviour
         #region Standalone Inputs
         if (Input.GetMouseButtonDown(0))
         {
-            tap = true;
-            isDraging = true;
+            tap = isDraging = true;
             startTouch = Input.mousePosition;
         }
         else if (Input.GetMouseButtonUp(0))
@@ -33,12 +32,13 @@ public class Swipe : MonoBehaviour
         #region Mobile Inputs
         if (Input.touches.Length > 0)
         {
+            // Dokunma başlangıç evresinde mi?
             if (Input.touches[0].phase == TouchPhase.Began)
             {
-                tap = true;
-                isDraging = true;
+                tap = isDraging = true;
                 startTouch = Input.touches[0].position;
             }
+            // Dokunma bitiş evresinde mi?
             else if (Input.touches[0].phase == TouchPhase.Ended || Input.touches[0].phase == TouchPhase.Canceled)
             {
                 isDraging = false;
@@ -47,7 +47,7 @@ public class Swipe : MonoBehaviour
         }
         #endregion
 
-        //Calculate the distance
+        // Kaydırma mesafesini hesapla
         swipeDelta = Vector2.zero;
         if (isDraging)
         {
@@ -57,16 +57,16 @@ public class Swipe : MonoBehaviour
                 swipeDelta = (Vector2)Input.mousePosition - startTouch;
         }
 
-        //Did we cross the deadzone?
+        // Ölü alanı geçti mi?
         if (swipeDelta.magnitude > 125)
         {
-            //Which direction?
+            // Hangi yön?
             float x = swipeDelta.x;
             float y = swipeDelta.y;
 
             if (Mathf.Abs(x) > Mathf.Abs(y))
             {
-                //Left or Right
+                // Sol ya da sağ
                 if (x < 0)
                     swipeLeft = true;
                 else
@@ -74,7 +74,7 @@ public class Swipe : MonoBehaviour
             }
             else
             {
-                //Up or Down
+                // Yukarı ya da aşağı
                 if (y < 0)
                     swipeDown = true;
                 else
@@ -84,6 +84,7 @@ public class Swipe : MonoBehaviour
         }
     }
 
+    // Kaydırmayı sıfırla
     private void Reset()
     {
         startTouch = swipeDelta = Vector2.zero;
