@@ -4,65 +4,65 @@ using UnityEngine;
 
 public class PlayerMotor : MonoBehaviour
 {
-    public AudioSource bg;
-    public Animator animator;
     private CharacterController controller;
-    private Vector3 moveVector; // Oyuncunun hareket vektörü
-    private int desiredLane = 1; // 0:sol, 1:orta, 2:sağ
-    private bool isDead = false;
+    private Vector3 moveVector;
+    public Animator animator;
+
     private float speed = 6.0f;
     private float verticalVelocity = 0.0f;
     private float gravity = 12.0f;
     private float animationDuration = 3.0f;
     private float jumpForce = 6.8f;
-    private float laneDistance = 2.0f; // Şeritler arasındaki mesafe
     private float startTime;
+    private int desiredLane = 1; //0:left, 1:middle, 2:right
+    private float laneDistance = 2.0f; //The distance between tow lanes
+    private bool isDead = false;
+    public AudioSource bg;
 
+    // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        startTime = Time.time; // Sahnenin başlangıç zamanı alındı
+        startTime = Time.time;
     }
 
+    // Update is called once per frame
     void Update()
     {
-        // Karakter öldüyse hareket edemesin
         if (isDead)
             return;
-        // Animasyon süresi boyunca kontroller devre dışı olsun
+
         if (Time.time - startTime < animationDuration)
         {
             controller.Move(Vector3.forward * speed * Time.deltaTime);
             return;
         }
 
-        moveVector = Vector3.zero; // Hareket vektörü sıfırlandı
+        moveVector = Vector3.zero;
 
-        verticalVelocity -= gravity * Time.deltaTime; // Yer çekimi etkisi oluşturuldu
+        verticalVelocity -= gravity * Time.deltaTime;
         if ((Swipe.swipeUp || Input.GetKeyDown(KeyCode.W)) && transform.position.y <= 0.1f)
         {
-            verticalVelocity = jumpForce; // Karakter yerdeyse dikey hızına zıplama kuvveti uygula
+            verticalVelocity = jumpForce;
         }
         if ((Swipe.swipeDown || Input.GetKeyDown(KeyCode.S)) && transform.position.y > 0.1f)
         {
-            verticalVelocity = -jumpForce; // Karakter havadaysa dikey hızına eksi zıplama kuvveti uygula
+            verticalVelocity = -jumpForce;
         }
         if (Swipe.swipeRight || Input.GetKeyDown(KeyCode.D))
         {
             desiredLane++;
-            // Daha fazla sağa gitme
             if (desiredLane == 3)
                 desiredLane = 2;
         }
         if (Swipe.swipeLeft || Input.GetKeyDown(KeyCode.A))
         {
             desiredLane--;
-            // Daha fazla sola gitme
             if (desiredLane == -1)
                 desiredLane = 0;
         }
 
-        // Karakterin nerede olacağını hesapla
+        //Calculate where we should be in the future
         Vector3 targetPosition = transform.position.z * transform.forward + transform.position.y * transform.up;
 
         if (desiredLane == 0)
@@ -70,37 +70,34 @@ public class PlayerMotor : MonoBehaviour
         else if (desiredLane == 2)
             targetPosition += Vector3.right * laneDistance;
 
-        // Hedef pozisyona ulaşana kadar geçiş yap
+        //transform.position = targetPosition;
         if (transform.position != targetPosition)
         {
-            Vector3 difference = targetPosition - transform.position;
-            Vector3 moveDirection = difference.normalized * 25 * Time.deltaTime;
+            Vector3 diff = targetPosition - transform.position;
+            Vector3 moveDir = diff.normalized * 25 * Time.deltaTime;
 
-            if (moveDirection.sqrMagnitude < difference.magnitude)
-                controller.Move(moveDirection);
+            if (moveDir.sqrMagnitude < diff.magnitude)
+                controller.Move(moveDir);
             else
-                controller.Move(difference);
+                controller.Move(diff);
         }
-
         moveVector.z = speed;
         moveVector.y = verticalVelocity;
-        // Karakteri hareket ettir
+        //Move Player
         controller.Move(moveVector * Time.deltaTime);
     }
-    // Hızı artıran fonksiyon
+
     public void SetSpeed(float modifier)
     {
         speed = 6.0f + modifier;
     }
-
-    // Çarpışma kontrolünü yapan fonksiyon
+    //It is being valled every time our capsule hits something
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (hit.point.z > transform.position.z + 0.1f && hit.gameObject.tag == "Block")
             Death();
     }
 
-    // Karakter ölünce gerekli işleri yapan fonksiyon
     private void Death()
     {
         isDead = true;

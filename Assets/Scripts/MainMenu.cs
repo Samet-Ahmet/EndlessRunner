@@ -7,14 +7,12 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public Text highScoreText;
-
+    // Start is called before the first frame update
     void Start()
     {
-        // Hafızadan en yüksek skoru al
         highScoreText.text = "Highscore: " + ((int)PlayerPrefs.GetFloat("HighScore")).ToString();
     }
 
-    // Oyun sahnesini yükle
     public void ToGame()
     {
         SceneManager.LoadScene("Game");

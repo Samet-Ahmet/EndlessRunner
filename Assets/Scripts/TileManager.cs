@@ -5,22 +5,22 @@ using UnityEngine;
 public class TileManager : MonoBehaviour
 {
     public GameObject[] tilePrefabs;
-    private List<GameObject> activeTiles;
-    private Transform playerTransform;
-    private int amountOfTileOnScreen = 20;
-    private int lastPrefabIndex = 0;
-    private float spawnZ = -5.0f; // Yeni oluşturulacak yolun konumu
-    private float tileLength = 10.0f; // Her bir prefab'ın uzunluğu
-    private float safeZone = 15.0f;
 
+    private Transform playerTransform;
+    private float spawnZ = -5.0f;
+    private float tileLength = 10.0f;
+    private float safeZone = 15.0f;
+    private int amnTilesOnScreen = 20;
+    private List<GameObject> activeTiles;
+    private int lastPrefabIndex = 0;
+
+    // Start is called before the first frame update
     void Start()
     {
         activeTiles = new List<GameObject>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        // Oyunun başlangıcında oluşan yollar
-        for (int i = 0; i < amountOfTileOnScreen; i++)
+        for (int i = 0; i < amnTilesOnScreen; i++)
         {
-            // İlk beş yol engelsiz olmalı
             if (i < 5)
                 SpawnTile(0);
             else
@@ -28,20 +28,19 @@ public class TileManager : MonoBehaviour
         }
     }
 
+    // Update is called once per frame
     void Update()
     {
-        // İleriye yol ekle, arkada kalan yolları sil
-        if (playerTransform.position.z - safeZone > (spawnZ - amountOfTileOnScreen * tileLength))
+        if (playerTransform.position.z - safeZone > (spawnZ - amnTilesOnScreen * tileLength))
         {
             SpawnTile();
             DeleteTile();
         }
     }
-    // Yol oluşturan fonksiyon
-    private void SpawnTile(int prefabIndex = -1)
+
+    private void SpawnTile(int prefabIndex = -1)//cengiz
     {
         GameObject go;
-
         if (prefabIndex == -1)
             go = Instantiate(tilePrefabs[RandonPrefabIndex()]) as GameObject;
         else
@@ -51,23 +50,21 @@ public class TileManager : MonoBehaviour
         spawnZ += tileLength;
         activeTiles.Add(go);
     }
-    // Arkada kalan yolları kaldıran fonksiyon
+
     private void DeleteTile()
     {
         Destroy(activeTiles[0]);
         activeTiles.RemoveAt(0);
     }
 
-    // Yolların rastgele oluşmasını sağlayan fonksiyon
     private int RandonPrefabIndex()
     {
         if (tilePrefabs.Length <= 1)
             return 0;
-
         int randomIndex = lastPrefabIndex;
-        // Aynı yolu arka arkaya oluşturma
         while (randomIndex == lastPrefabIndex)
             randomIndex = Random.Range(0, tilePrefabs.Length);
+        //randomIndex = 0;
         lastPrefabIndex = randomIndex;
         return randomIndex;
     }
