@@ -566,6 +566,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8ead4d1814f0e5459baa279bc1c629d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bg: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!143 &6174646752525745793
 CharacterController:
   m_ObjectHideFlags: 0
