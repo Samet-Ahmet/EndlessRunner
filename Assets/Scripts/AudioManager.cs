@@ -19,6 +19,8 @@ public class AudioManager : MonoBehaviour
         // GetBool fonksiyonu olmadığı için int tipi kullanıldı (1: true 0: false)
         isMuted = bg.mute = congrats.mute = gameover.mute = PlayerPrefs.GetInt("isMuted") == 1 ? true : false;
         onOff.SetActive(isMuted);
+        // Başlangıçta kayıtlı ses seviyesine ayarla
+        SetVolume();
     }
 
     // Sesi açıp kapatan fonksiyon
@@ -33,4 +35,17 @@ public class AudioManager : MonoBehaviour
         PlayerPrefs.SetInt("isMuted", isMuted ? 1 : 0);
     }
 
+    // Kayıtlı ses seviyesini alan fonksiyon
+    public float GetVolume()
+    {
+        return PlayerPrefs.GetFloat("volume");
+    }
+
+    // Ses seviyesini ayarlayan fonksiyon
+    public void SetVolume()
+    {
+        bg.volume = GetVolume();
+        congrats.volume = GetVolume();
+        gameover.volume = GetVolume();
+    }
 }

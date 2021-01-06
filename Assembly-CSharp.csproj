@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scripts\PauseGame.cs" />
     <Compile Include="Assets\Scripts\PlayerMotor.cs" />
     <Compile Include="Assets\Scripts\Score.cs" />
+    <Compile Include="Assets\Scripts\Settings.cs" />
     <Compile Include="Assets\Scripts\Swipe.cs" />
     <Compile Include="Assets\Scripts\TileManager.cs" />
     <Reference Include="UnityEngine">
