@@ -43,7 +43,7 @@ public class TileManager : MonoBehaviour
         GameObject go;
 
         if (prefabIndex == -1)
-            go = Instantiate(tilePrefabs[RandonPrefabIndex()]) as GameObject;
+            go = Instantiate(tilePrefabs[RandomPrefabIndex()]) as GameObject;
         else
             go = Instantiate(tilePrefabs[prefabIndex]) as GameObject;
         go.transform.SetParent(transform);
@@ -59,7 +59,7 @@ public class TileManager : MonoBehaviour
     }
 
     // Yolların rastgele oluşmasını sağlayan fonksiyon
-    private int RandonPrefabIndex()
+    private int RandomPrefabIndex()
     {
         if (tilePrefabs.Length <= 1)
             return 0;

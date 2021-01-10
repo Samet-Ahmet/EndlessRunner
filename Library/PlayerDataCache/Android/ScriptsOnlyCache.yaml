@@ -70,35 +70,35 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11244}
+      Script: {instanceID: 11254}
     - Class: 114
-      Script: {instanceID: 11338}
+      Script: {instanceID: 11348}
     - Class: 114
-      Script: {instanceID: 11410}
+      Script: {instanceID: 11420}
     - Class: 114
-      Script: {instanceID: 11446}
+      Script: {instanceID: 11456}
     - Class: 114
-      Script: {instanceID: 11454}
+      Script: {instanceID: 11464}
     - Class: 114
-      Script: {instanceID: 11836}
+      Script: {instanceID: 11846}
     - Class: 114
-      Script: {instanceID: 11998}
+      Script: {instanceID: 12008}
     - Class: 114
-      Script: {instanceID: 12032}
+      Script: {instanceID: 12042}
     - Class: 114
-      Script: {instanceID: 12142}
+      Script: {instanceID: 12152}
     - Class: 114
-      Script: {instanceID: 12148}
+      Script: {instanceID: 12158}
     - Class: 114
-      Script: {instanceID: 12230}
+      Script: {instanceID: 12240}
     - Class: 114
-      Script: {instanceID: 12554}
+      Script: {instanceID: 12564}
     - Class: 114
-      Script: {instanceID: 12714}
+      Script: {instanceID: 12724}
     - Class: 114
-      Script: {instanceID: 12958}
+      Script: {instanceID: 12968}
     - Class: 114
-      Script: {instanceID: 13064}
+      Script: {instanceID: 13074}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -163,27 +163,27 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11244}
+      Script: {instanceID: 11254}
     - Class: 114
-      Script: {instanceID: 11300}
+      Script: {instanceID: 11310}
     - Class: 114
-      Script: {instanceID: 11410}
+      Script: {instanceID: 11420}
     - Class: 114
-      Script: {instanceID: 11442}
+      Script: {instanceID: 11452}
     - Class: 114
-      Script: {instanceID: 11454}
+      Script: {instanceID: 11464}
     - Class: 114
-      Script: {instanceID: 11836}
+      Script: {instanceID: 11846}
     - Class: 114
-      Script: {instanceID: 12230}
+      Script: {instanceID: 12240}
     - Class: 114
-      Script: {instanceID: 12302}
+      Script: {instanceID: 12312}
     - Class: 114
-      Script: {instanceID: 12714}
+      Script: {instanceID: 12724}
     - Class: 114
-      Script: {instanceID: 13064}
+      Script: {instanceID: 13074}
     - Class: 114
-      Script: {instanceID: 13094}
+      Script: {instanceID: 13104}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -711,4 +711,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/Menu.unity
   - Assets/Scenes/Game.unity
-  playerPath: C:/Users/ahmetkkn07/Desktop/EndlessRunner v2.5.apk
+  playerPath: C:/Users/samet/Desktop/EndlessRunnerv2.6.apk
